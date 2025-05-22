@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Opulence Colombo - Luxury and Serenity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin:0; padding:0;
+      font-family: 'Poppins', sans-serif;
+      color: #030d1e;
+      background: #fafafa;
+      overflow-x: hidden;
+    }
+    a {
+      color: #0a4275;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #b9975b;
+      outline: none;
+    }
+    h1,h2,h3,h4,h5 {
+      font-family: 'Lora', serif;
+      margin: 0 0 0.5em 0;
+      color: #1b2a41;
+    }
+    h1 {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 2.4rem;
+    }
+    h3 {
+      font-size: 1.8rem;
+    }
+    p, li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #222f48;
+    }
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b9975b;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8a7539;
+    }
+
+    /* Container wrapper */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section */
+    #hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    #hero video {
+      position: absolute;
+      top: 50%; left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -2;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.65) saturate(1.2);
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(173,216,230,0.4), rgba(2,34,64,0.85));
+      z-index: -1;
+    }
+    #hero .hero-content {
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    #hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5vw;
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      margin-bottom: 0.3em;
+      color: #f9d976;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #f9d976,
+        0 0 15px #f9d976,
+        0 0 20px #ffcc33;
+      animation: glowText 4s ease-in-out infinite alternate;
+    }
+    #hero h2 {
+      font-weight: 300;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      margin-top:0;
+      color: #fff;
+      text-shadow: 1px 1px 6px rgb(0 0 0 / 0.7);
+      opacity: 0.95;
+      animation: fadeInUp 2.5s ease forwards;
+      animation-delay: 0.8s;
+    }
+    #hero .scroll-down {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #b9975b;
+      letter-spacing: 0.15em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    #hero .scroll-down svg {
+      margin-top: 0.3rem;
+      width: 30px;
+      height: 30px;
+      fill: #b9975b;
+      animation: bounceArrow 2s infinite;
+    }
+    /* Animations */
+    @keyframes glowText {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #f9d976, 0 0 15px #f9d976, 0 0 20px #ffcc33;}
+      100% { text-shadow: 0 0 10px #fff, 0 0 25px #b9975b, 0 0 30px #d4af37, 0 0 40px #ffcc33;}
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(25px);}
+      100% { opacity: 0.95; transform: translateY(0);}
+    }
+    @keyframes bounceArrow {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0);}
+      40% { transform: translateY(8px);}
+      60% { transform: translateY(5px);}
+    }
+
+    /* Floating navbar (hidden by default) */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right:0;
+      height: 60px;
+      background: rgba(23, 32, 51, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    #navbar.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #f9d976;
+      letter-spacing: 0.1em;
+    }
+    #navbar nav a {
+      margin-left: 25px;
+      color: #eee;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+    #navbar nav a:hover, #navbar nav a:focus {
+      color: #f9d976;
+    }
+
+    /* Main sections */
+    section {
+      padding: 4rem 0 3rem 0;
+      background: white;
+    }
+    section.alt-bg {
+      background: #f9f9f9;
+    }
+
+    /* Welcome Section */
+    #welcome .intro-text {
+      max-width: 700px;
+      margin: 0 auto 2.5rem auto;
+      text-align: center;
+      color: #1f2b43;
+    }
+    #welcome .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    #welcome .btn {
+      background: #b9975b;
+      color: white;
+      padding: 14px 40px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgb(185 149 78 / 0.6);
+      transition: background-color 0.3s ease;
+    }
+    #welcome .btn:hover, #welcome .btn:focus {
+      background: #8a7539;
+      outline:none;
+    }
+    /* Load animation */
+    #welcome {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUpWelcome 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+    @keyframes fadeInUpWelcome {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Rooms & Suites */
+    #rooms {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    #rooms h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #1b2a41;
+    }
+    #room-filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    #room-filters button {
+      background: #e6dfc7;
+      border: 2px solid #b9975b;
+      color: #4b4b4b;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    #room-filters button.active, #room-filters button:hover {
+      background: #b9975b;
+      color: white;
+    }
+    .room-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+    }
+    .room-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(185,149,78,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .room-card:hover, .room-card:focus {
+      transform: scale(1.03);
+      outline:none;
+    }
+    .room-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid #b9975b;
+    }
+    .room-info {
+      padding: 15px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .room-info h3 {
+      margin-bottom: 0.4rem;
+      color: #4f4f4f;
+    }
+    .room-info p {
+      flex-grow: 1;
+      font-size: 0.9rem;
+      color: #626262;
+      margin-bottom: 1rem;
+    }
+    .room-info .features {
+      font-size: 0.85rem;
+      color: #6e6e6e;
+      margin-bottom: 0.5rem;
+    }
+    .room-info button {
+      align-self: flex-start;
+      background: #b9975b;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .room-info button:hover, .room-info button:focus {
+      background: #8a7539;
+      outline:none;
+    }
+    /* Room modal */
+    #room-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 13, 30, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    #room-modal.active {
+      display: flex;
+    }
+    #room-modal .modal-content {
+      background: white;
+      max-width: 900px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      padding: 1rem 2rem 2rem;
+    }
+    #room-modal .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #b9975b;
+      cursor: pointer;
+      transition: color 0.3s;
+      border: none;
+      background: transparent;
+    }
+    #room-modal .close-btn:hover {
+      color: #8a7539;
+      outline:none;
+    }
+    #room-modal h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    #room-modal .modal-gallery {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    #room-modal .modal-gallery img {
+      height: 120px;
+      border-radius: 10px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    #room-modal .modal-desc {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    #room-modal .modal-amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+      color: #777;
+      font-weight: 500;
+    }
+    #room-modal .modal-amenities span {
+      background-color: #f3ecd7;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    #room-modal .modal-book-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #b9975b;
+      color: white;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      border: none;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+    }
+    #room-modal .modal-book-btn:hover, #room-modal .modal-book-btn:focus {
+      background: #8a7539;
+      outline:none;
+    }
+
+    /* Facilities & Amenities */
+    #facilities {
+      padding-bottom: 2rem;
+    }
+    #facilities h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .facility-item {
+      background: #fff9e9;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      color: #6f5c2f;
+      cursor: default;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgb(185 149 78 / 0.18);
+      user-select: none;
+    }
+    .facility-item:hover, .facility-item:focus {
+      background-color: #b9975b;
+      color: #fff;
+      outline: none;
+    }
+    .facility-item svg {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 10px;
+      fill: currentColor;
+    }
+    .facility-item span {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* Things to do */
+    #things-to-do {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    #things-to-do h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 25px;
+      border: 2px solid #b9975b;
+      background: #eae2b7;
+      font-weight: 700;
+      cursor: pointer;
+      color: #735f1d;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .tab-btn.active, .tab-btn:hover, .tab-btn:focus {
+      background: #b9975b;
+      color: white;
+      border-color: #b9975b;
+      outline: none;
+    }
+    .tab-content {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 220px;
+      box-shadow: 0 6px 16px rgb(185 149 78 / 0.3);
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .attraction-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 18px;
+    }
+    .attraction-item {
+      background: #f0e8c1;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgb(185 149 78 / 0.25);
+      font-weight: 600;
+      color: #6f5c2f;
+      cursor: default;
+      transition: background-color 0.3s;
+    }
+    .attraction-item:hover {
+      background-color: #b9975b;
+      color: white;
+    }
+    .map-placeholder {
+      margin-top: 20px;
+      height: 280px;
+      background: linear-gradient(45deg, #b9975b, #d4af37);
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgb(185 149 78 / 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      user-select: none;
+    }
+
+    /* Gallery */
+    #gallery {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 10px 40px 10px;
+    }
+    #gallery h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #1b2a41;
+    }
+    .gallery-grid {
+      column-count: 4;
+      column-gap: 15px;
+    }
+    @media (max-width: 1100px) {
+      .gallery-grid {
+        column-count: 3;
+      }
+    }
+    @media (max-width: 720px) {
+      .gallery-grid {
+        column-count: 2;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid {
+        column-count: 1;
+      }
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 15px;
+      position: relative;
+      cursor: zoom-in;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgb(185 149 78 / 0.25);
+      transition: transform 0.3s ease;
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      transition: transform 0.4s ease;
+      object-fit: cover;
+      max-height: 260px;
+    }
+    .gallery-item:hover img, .gallery-item:focus img {
+      transform: scale(1.07);
+      outline:none;
+    }
+
+    /* Lightbox */
+    #lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 13, 30, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      cursor: zoom-out;
+    }
+    #lightbox-overlay.active {
+      display: flex;
+    }
+    #lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgb(185 149 78 / 0.7);
+      user-select: none;
+    }
+
+    /* Virtual Tours */
+    #virtual-tour {
+      background: #f9f9f9;
+      padding: 3rem 10px 4rem 10px;
+    }
+    #virtual-tour h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .video-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      gap: 25px;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    }
+    .video-wrapper {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgb(185 149 78 / 0.3);
+    }
+    .video-wrapper iframe,
+    .video-wrapper video {
+      width: 100%;
+      height: 220px;
+      display: block;
+      border: none;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    /* Booking Engine */
+    #booking {
+      max-width: 510px;
+      background: white;
+      margin: 0 auto 3rem auto;
+      padding: 2rem 2.5rem;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgb(185 149 78 / 0.5);
+    }
+    #booking h2 {
+      text-align: center;
+      margin-bottom: 1.8rem;
+      color: #1b2a41;
+    }
+    #booking form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    #booking label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #4b4b4b;
+    }
+    #booking input[type="text"],
+    #booking input[type="email"],
+    #booking input[type="date"],
+    #booking select {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.8px solid #ccc;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s;
+    }
+    #booking input[type="text"]:focus,
+    #booking input[type="email"]:focus,
+    #booking input[type="date"]:focus,
+    #booking select:focus {
+      outline: none;
+      border-color: #b9975b;
+      box-shadow: 0 0 8px rgb(185 149 78 / 0.5);
+    }
+    #booking button[type="submit"] {
+      background: #b9975b;
+      color: white;
+      font-weight: 700;
+      padding: 14px 0;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background-color 0.3s;
+    }
+    #booking button[type="submit"]:hover,
+    #booking button[type="submit"]:focus {
+      background: #8a7539;
+      outline:none;
+    }
+    #booking .promo-code {
+      font-size: 0.9rem;
+      color: #8a7539;
+      font-weight: 500;
+    }
+    #promo-input {
+      max-width: 150px;
+    }
+    #booking .feedback {
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #4b4b4b;
+      text-align: center;
+    }
+
+    /* Blog Section */
+    #blog {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 15px 4rem 15px;
+    }
+    #blog h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.3rem;
+    }
+    .blog-post {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(185,149,78,0.35);
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    .blog-post:hover, .blog-post:focus {
+      box-shadow: 0 12px 30px rgba(185,149,78,0.5);
+      outline:none;
+    }
+    .blog-post h3 {
+      margin-bottom: 0.5rem;
+      color: #4a4a4a;
+    }
+    .blog-post p {
+      color: #6f6f6f;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+    .blog-post .read-more {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 600;
+      color: #b9975b;
+      font-size: 0.95rem;
+    }
+    .blog-post .read-more:hover {
+      color: #8a7539;
+    }
+
+    /* Testimonials */
+    #reviews {
+      background:#f9f7f1;
+      padding: 3rem 10px 4rem 10px;
+    }
+    #reviews h2 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: #1b2a41;
+    }
+    .reviews-carousel {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 6px 20px rgb(185 149 78 / 0.35);
+      padding: 1.5rem 2rem;
+    }
+    .review-card {
+      text-align: center;
+      color: #4b4b4b;
+      user-select:none;
+    }
+    .review-text {
+      font-style: italic;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      min-height: 90px;
+    }
+    .review-author {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #b9975b;
+    }
+    .carousel-controls {
+      position: absolute;
+      top: 48%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: auto;
+      padding: 0 15px;
+    }
+    .carousel-btn {
+      background: rgba(185, 149, 78, 0.8);
+      border: none;
+      color: white;
+      font-size: 1.6rem;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select:none;
+      transition: background-color 0.3s ease;
+    }
+    .carousel-btn:hover, .carousel-btn:focus {
+      background: #8a7539;
+      outline:none;
+    }
+
+    /* Contact Section */
+    #contact {
+      max-width: 900px;
+      margin: 0 auto 4rem auto;
+      padding: 0 15px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(185,149,78,0.4);
+    }
+    #contact h2 {
+      text-align: center;
+      margin: 2.8rem 0 1.8rem 0;
+      color: #1b2a41;
+    }
+    #contact .info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 25px;
+      color: #475669;
+    }
+    #contact .info div {
+      flex: 1 1 250px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    #contact iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgb(185 149 78 / 0.5);
+      margin-bottom: 2rem;
+    }
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 3rem;
+    }
+    #contact form label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #4b4b4b;
+    }
+    #contact form input,
+    #contact form textarea {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      resize: vertical;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+    }
+    #contact form input:focus,
+    #contact form textarea:focus {
+      border-color: #b9975b;
+      outline: none;
+      box-shadow: 0 0 8px rgb(185 149 78 / 0.7);
+    }
+    #contact form textarea {
+      min-height: 110px;
+    }
+    #contact button[type="submit"] {
+      background: #b9975b;
+      color: white;
+      font-weight: 700;
+      padding: 14px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    #contact button[type="submit"]:hover,
+    #contact button[type="submit"]:focus {
+      background: #8a7539;
+      outline:none;
+    }
+    #contact .form-feedback {
+      font-weight: 600;
+      text-align: center;
+      color: #4a4a4a;
+    }
+    /* Live chat placeholder */
+    #live-chat-placeholder {
+      max-width: 300px;
+      margin: 0 auto 3rem auto;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #777;
+    }
+
+    /* Footer */
+    footer {
+      background: #1b2a41;
+      color: #ccc;
+      padding: 2rem 15px 4rem 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      user-select:none;
+    }
+    footer .footer-desc {
+      max-width: 700px;
+      margin: 0 auto 1rem auto;
+      color: #d2cece;
+    }
+    footer .quick-links {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    footer .quick-links a {
+      color: #b9975b;
+      transition: color 0.3s;
+    }
+    footer .quick-links a:hover, footer .quick-links a:focus {
+      color: #f9d976;
+      outline:none;
+    }
+    footer .social-icons {
+      margin-bottom: 1rem;
+    }
+    footer .social-icons a {
+      margin: 0 10px;
+      color: #b9975b;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    footer .social-icons a:hover, footer .social-icons a:focus {
+      color: #f9d976;
+      outline:none;
+    }
+    footer .newsletter {
+      margin-top: 1.5rem;
+    }
+    footer input[type="email"] {
+      padding: 10px 16px;
+      border-radius: 40px 0 0 40px;
+      border: none;
+      width: 220px;
+      font-size: 1rem;
+    }
+    footer button {
+      background: #b9975b;
+      border: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 11px 24px;
+      border-radius: 0 40px 40px 0;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    footer button:hover, footer button:focus {
+      background: #8a7539;
+      outline:none;
+    }
+    @media (max-width: 560px) {
+      footer .quick-links {
+        font-size: 0.88rem;
+      }
+      footer input[type="email"] {
+        width: 130px;
+      }
+    }
+
+    /* Dark mode toggle button */
+    #darkModeToggle {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #b9975b;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgb(185 149 78 / 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      transition: background-color 0.3s ease;
+    }
+    #darkModeToggle:hover, #darkModeToggle:focus {
+      background: #8a7539;
+      outline:none;
+    }
+    #darkModeToggle svg {
+      fill: white;
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Dark mode styles */
+    body.dark {
+      background: #0d1321;
+      color: #d0d3d8;
+    }
+    body.dark a {
+      color: #d4af37;
+    }
+    body.dark a:hover, body.dark a:focus {
+      color: #f9d976;
+    }
+    body.dark #navbar {
+      background: rgba(10, 14, 25, 0.95);
+      box-shadow: 0 2px 10px rgb(255 208 0 / 0.3);
+    }
+    body.dark section {
+      background: #15202b;
+    }
+    body.dark section.alt-bg {
+      background: #121b2b;
+    }
+    body.dark #hero::before {
+      background: linear-gradient(180deg, rgba(19,38,64,0.5), rgba(1,9,20,0.8));
+    }
+    body.dark button.btn, body.dark #booking button[type="submit"], body.dark .room-info button, body.dark #room-modal .modal-book-btn, body.dark #facilities .facility-item:hover, body.dark #facilities .facility-item:focus, body.dark .tab-btn.active, body.dark .tab-btn:hover, body.dark .tab-btn:focus {
+      background: #d4af37;
+      color: #0d1321;
+    }
+    body.dark button.btn:hover, body.dark button.btn:focus, body.dark #booking button[type="submit"]:hover, body.dark #booking button[type="submit"]:focus, body.dark .room-info button:hover, body.dark .room-info button:focus, body.dark #room-modal .modal-book-btn:hover, body.dark #room-modal .modal-book-btn:focus {
+      background: #f9d976;
+    }
+    body.dark footer {
+      background: #0a101b;
+      color: #aaa;
+    }
+    body.dark footer .footer-desc {
+      color: #bbb;
+    }
+    body.dark footer .quick-links a {
+      color: #d4af37;
+    }
+    body.dark footer .quick-links a:hover, body.dark footer .quick-links a:focus {
+      color: #f9d976;
+    }
+    body.dark footer .social-icons a {
+      color: #d4af37;
+    }
+    body.dark footer .newsletter button {
+      background: #d4af37;
+      color: #0d1321;
+    }
+    body.dark footer .newsletter button:hover, body.dark footer .newsletter button:focus {
+      background: #f9d976;
+    }
+    /* Loading spinner */
+    #loading-spinner {
+      position: fixed;
+      inset: 0;
+      background-color: white;
+      z-index: 1200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #loading-spinner.dark {
+      background-color: #0d1321;
+    }
+    .spinner {
+      border: 6px solid #f3f3f3; /* Light grey */
+      border-top: 6px solid #b9975b; /* Gold */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1.3s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Spinner -->
+  <div id="loading-spinner" role="alert" aria-live="assertive"><div class="spinner" aria-label="Loading"></div></div>
+
+  <!-- Floating Navbar -->
+  <header id="navbar" role="banner" aria-label="Primary Navigation">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <a href="#hero" class="logo" aria-label="Opulence Colombo Home">OPULENCE COLOMBO</a>
+      <nav role="navigation" aria-label="Main Navigation">
+        <a href="#welcome">Welcome</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#things-to-do">Things To Do</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking">Book</a>
+        <a href="#blog">Blog</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Landing Section -->
+  <section id="hero" role="img" aria-label="Hero video background showing Colombo city, ocean, and trees montage">
+    <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="https://cdn.pixabay.com/vimeo/445368654/Colombo%20Sri%20Lanka%20Drone%20Footage%20-%207964.mp4?width=1280&hash=401c46f555a1e66e69f674d4fc9a0cfcf4149de6" type="video/mp4" />
+      Sorry, your browser does not support embedded videos.
+    </video>
+    <div class="hero-content">
+      <h1 tabindex="0">OPULENCE COLOMBO</h1>
+      <h2 tabindex="0">Luxury and Serenity in the Heart of Colombo</h2>
+      <div class="scroll-down" role="button" tabindex="0" aria-label="Scroll down to Welcome Section" onclick="scrollToSection('welcome')" onkeypress="if(event.key==='Enter' || event.key===' ') scrollToSection('welcome')">
+        SCROLL DOWN
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome Section -->
+  <section id="welcome" tabindex="0" aria-label="Welcome introduction to Opulence Colombo">
+    <div class="container">
+      <div class="intro-text">
+        <h2>Welcome to Opulence Colombo</h2>
+        <p>Discover the perfect blend of tropical serenity and urban sophistication at Opulence Colombo. Experience ultra-luxury accommodations, unparalleled services, and exclusive amenities in the vibrant heart of Sri Lanka's capital.</p>
+      </div>
+      <div class="btn-group">
+        <button class="btn" onclick="scrollToSection('rooms')">Explore Rooms</button>
+        <button class="btn" onclick="scrollToSection('booking')">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms & Suites Section -->
+  <section id="rooms" aria-label="Rooms and suites at Opulence Colombo">
+    <h2>Rooms & Suites</h2>
+    <div id="room-filters" role="tablist" aria-label="Filter rooms">
+      <button role="tab" aria-selected="true" class="active" data-filter="all" tabindex="0">All</button>
+      <button role="tab" aria-selected="false" data-filter="deluxe" tabindex="-1">Deluxe</button>
+      <button role="tab" aria-selected="false" data-filter="balcony" tabindex="-1">Balcony</button>
+      <button role="tab" aria-selected="false" data-filter="twin" tabindex="-1">Twin Beds</button>
+    </div>
+    <div class="room-list" id="room-list" role="region" aria-live="polite" aria-label="List of available rooms"></div>
+  </section>
+
+  <!-- Room Details Modal -->
+  <div id="room-modal" role="dialog" aria-modal="true" aria-labelledby="room-modal-title" tabindex="-1">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close room details">&times;</button>
+      <h3 id="room-modal-title"></h3>
+      <div class="modal-gallery" aria-label="Room photos"></div>
+      <div class="modal-desc"></div>
+      <div class="modal-amenities" aria-label="Room amenities"></div>
+      <button class="modal-book-btn">Book This Room</button>
+    </div>
+  </div>
+
+  <!-- Facilities & Amenities Section -->
+  <section id="facilities" aria-label="Hotel Facilities and Amenities">
+    <h2>Facilities & Amenities</h2>
+    <div class="facility-grid" role="list">
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Free WiFi">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 18c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm7.29-3.19l1.42 1.42a10.94 10.94 0 0 0-17.42 0l1.42-1.42a8.94 8.94 0 0 1 14.58 0zm2.29-2.27l1.42 1.42a13.94 13.94 0 0 0-22.83 0l1.42-1.42a11.94 11.94 0 0 1 19.99 0z"/></svg>
+        <span>Free WiFi</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Family Rooms">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-11 0c1.66 0 2.99-1.34 2.99-3S6.66 5 5 5 2 6.34 2 8s1.34 3 3 3zm5.5 5c-2.33 0-7 1.17-7 3.5V21h14v-1.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <span>Family Rooms</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Free Parking">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 14a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-8h-4v10h2v-8h2v8h2v-8z"/></svg>
+        <span>Free Parking</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Tea and Coffee Makers">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 4h12v2H6zm1 8.5v4H6v-4zm4 2.5v-4l3 2-3 2zm4-4v4h-1v-4z"/></svg>
+        <span>Tea/Coffee Makers</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="24-hour Front Desk">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M11 18v-1H4v1h7zm9.24-4.24l-1.06 1.06-4.24-4.24 1.06-1.06 4.24 4.24zM12 13h6v-2h-6v2z"/></svg>
+        <span>24-hour Front Desk</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Soundproof Rooms">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M11.5 3v18h-1v-18h1zm5.5 5v8h-1v-8h1zm-11 4V7H4v6h1z"/></svg>
+        <span>Soundproof Rooms</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Bicycle Rentals">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm14 4v-2h-3l3-4-1.5-1.5L13 12V8h-2v4l-3 3H3v2h16v-2z"/></svg>
+        <span>Bicycle Rentals</span>
+      </div>
+      <div class="facility-item" role="listitem" tabindex="0" aria-label="Outdoor Fireplace and Patio">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2l-3 6 3 2 3-2-3-6zm0 10c-3 4-5 7-5 9h10c0-2-2-5-5-9z"/></svg>
+        <span>Outdoor Fireplace &amp; Patio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Things to Do Around Colombo -->
+  <section id="things-to-do" aria-label="Things to Do Around Colombo">
+    <h2>Things To Do Around Colombo</h2>
+    <div class="tabs" role="tablist" aria-label="Things To Do Categories">
+      <button role="tab" aria-selected="true" class="tab-btn active" data-tab="nature" tabindex="0">Nature</button>
+      <button role="tab" aria-selected="false" class="tab-btn" data-tab="culture" tabindex="-1">Culture</button>
+      <button role="tab" aria-selected="false" class="tab-btn" data-tab="beaches" tabindex="-1">Beaches</button>
+      <button role="tab" aria-selected="false" class="tab-btn" data-tab="cafes" tabindex="-1">Cafes</button>
+      <button role="tab" aria-selected="false" class="tab-btn" data-tab="shopping" tabindex="-1">Shopping</button>
+    </div>
+    <div class="tab-content active" data-content="nature" tabindex="0">
+      <ul class="attraction-list">
+        <li class="attraction-item" tabindex="0">Galle Face Beach - 3.3 km</li>
+        <li class="attraction-item" tabindex="0">Viharamahadevi Park - 3.8 km</li>
+        <li class="attraction-item" tabindex="0">Lake Talangama Wewa - 14 km</li>
+      </ul>
+      <div class="map-placeholder" aria-label="Map showing nature attractions">Nature Attractions Map</div>
+    </div>
+    <div class="tab-content" data-content="culture" tabindex="0">
+      <ul class="attraction-list">
+        <li class="attraction-item" tabindex="0">Colombo Dutch Museum - 1.1 km</li>
+        <li class="attraction-item" tabindex="0">Independence Square - 4.6 km</li>
+        <li class="attraction-item" tabindex="0">National Art Gallery - 3.9 km</li>
+      </ul>
+      <div class="map-placeholder" aria-label="Map showing cultural attractions">Cultural Attractions Map</div>
+    </div>
+    <div class="tab-content" data-content="beaches" tabindex="0">
+      <ul class="attraction-list">
+        <li class="attraction-item" tabindex="0">Galle Face Beach - 2.6 km</li>
+        <li class="attraction-item" tabindex="0">Kollupitiya Beach - 5 km</li>
+        <li class="attraction-item" tabindex="0">Mount Lavinia - 14 km</li>
+      </ul>
+      <div class="map-placeholder" aria-label="Map showing beaches attractions">Beaches Map</div>
+    </div>
+    <div class="tab-content" data-content="cafes" tabindex="0">
+      <ul class="attraction-list">
+        <li class="attraction-item" tabindex="0">Sulaha Tea Centre - 100 m</li>
+        <li class="attraction-item" tabindex="0">City Rest Motels - 100 m</li>
+        <li class="attraction-item" tabindex="0">Mothukudy Aman Cafe - 200 m</li>
+      </ul>
+      <div class="map-placeholder" aria-label="Map showing cafes attractions">Cafes Map</div>
+    </div>
+    <div class="tab-content" data-content="shopping" tabindex="0">
+      <ul class="attraction-list">
+        <li class="attraction-item" tabindex="0">Dutch Hospital Shopping Precinct - 2.2 km</li>
+        <li class="attraction-item" tabindex="0">Colombo City Centre Mall - 2.8 km</li>
+        <li class="attraction-item" tabindex="0">Toranamal Shopping Area - 3.4 km</li>
+      </ul>
+      <div class="map-placeholder" aria-label="Map showing shopping attractions">Shopping Map</div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" aria-label="Photo Gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid" role="list" aria-label="Photo gallery grid">
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Luxury room interior" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Hotel exterior with pool" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Ocean view from balcony" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1494522203554-7a70cd62b7e7?auto=format&fit=crop&w=800&q=80" alt="Hotel dining area" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1465414829459-d228b58caf6e?auto=format&fit=crop&w=800&q=80" alt="Luxurious bathroom" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&w=800&q=80" alt="Hotel lobby area" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80" alt="Garden view" /></div>
+      <div class="gallery-item" role="listitem" tabindex="0"><img src="https://images.unsplash.com/photo-1533777324565-a04df0e527b7?auto=format&fit=crop&w=800&q=80" alt="Sunset beach" /></div>
+    </div>
+  </section>
+
+  <!-- Lightbox for Gallery -->
+  <div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview" tabindex="-1">
+    <img src="" alt="" />
+  </div>
+
+  <!-- Virtual Tour & Video Highlights -->
+  <section id="virtual-tour" aria-label="Virtual Tour and Video Highlights">
+    <h2>Virtual Tour &amp; Video Highlights</h2>
+    <div class="video-grid" role="region" aria-live="polite">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/L7Xjw9Ja7xU" title="360 degree room walkthrough" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" title="Hotel aerial drone footage" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Engine -->
+  <section id="booking" aria-label="Booking Engine">
+    <h2>Book Your Stay</h2>
+    <form id="booking-form" novalidate>
+      <label for="roomType">Room Type:</label>
+      <select id="roomType" name="roomType" required aria-required="true" aria-describedby="roomTypeDesc">
+        <option value="" disabled selected>Select room type</option>
+        <option value="deluxe">Deluxe Double Room</option>
+        <option value="deluxe-balcony">Deluxe Double Room with Balcony</option>
+        <option value="superior">Superior Double or Twin Room</option>
+      </select>
+      <small id="roomTypeDesc" class="sr-only">Select your preferred room type</small>
+
+      <label for="guests">Number of Guests:</label>
+      <select id="guests" name="guests" required aria-required="true" aria-describedby="guestsDesc">
+        <option value="" disabled selected>Select number of guests</option>
+        <option value="1">1 Guest</option>
+        <option value="2">2 Guests</option>
+        <option value="3">3 Guests</option>
+        <option value="4">4 Guests</option>
+      </select>
+      <small id="guestsDesc" class="sr-only">Select total guests staying</small>
+
+      <label for="checkin">Check-In Date:</label>
+      <input type="date" id="checkin" name="checkin" required aria-required="true" min="" />
+
+      <label for="checkout">Check-Out Date:</label>
+      <input type="date" id="checkout" name="checkout" required aria-required="true" min="" />
+
+      <label for="promo">Promo Code (optional):</label>
+      <input type="text" id="promo" name="promo" maxlength="20" autocomplete="off" />
+
+      <button type="submit">Confirm Booking</button>
+      <div class="feedback" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" aria-label="Blog articles about Colombo and Opulence">
+    <h2>From Our Blog</h2>
+    <div class="blog-list" role="list">
+      <article class="blog-post" tabindex="0" role="listitem" aria-label="Blog post: Top 10 Things to Do in Colombo">
+        <h3>Top 10 Things to Do in Colombo</h3>
+        <p>Explore the must-see landmarks and hidden gems of Colombo that combine culture, nature, and nightlife, making it an unforgettable experience.</p>
+        <a href="#" class="read-more" aria-label="Read more about Top 10 Things to Do in Colombo">Read More</a>
+      </article>
+      <article class="blog-post" tabindex="0" role="listitem" aria-label="Blog post: Opulence's Local Food Guide">
+        <h3>Opulence’s Local Food Guide</h3>
+        <p>Discover the diverse and vibrant flavors of Sri Lanka through an exclusive selection of dishes and dining experiences recommended by Opulence Colombo.</p>
+        <a href="#" class="read-more" aria-label="Read more about Opulence's Local Food Guide">Read More</a>
+      </article>
+      <article class="blog-post" tabindex="0" role="listitem" aria-label="Blog post: Planning Your Luxury Sri Lankan Getaway">
+        <h3>Planning Your Luxury Sri Lankan Getaway</h3>
+        <p>Tips, itineraries, and ideas for a perfect luxurious holiday in Sri Lanka, combining relaxation, adventure, and cultural immersion.</p>
+        <a href="#" class="read-more" aria-label="Read more about Planning Your Luxury Sri Lankan Getaway">Read More</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Guest Reviews -->
+  <section id="reviews" aria-label="Guest Reviews and Testimonials">
+    <h2>Guest Reviews</h2>
+    <div class="reviews-carousel" aria-live="polite">
+      <div class="review-card" aria-atomic="true" aria-live="assertive" tabindex="0">
+        <p class="review-text">"Impeccable service and stunning views. The staff went above and beyond to make our stay memorable."</p>
+        <p class="review-author">- Ayesha, UK</p>
+      </div>
+      <div class="review-card" aria-atomic="true" aria-live="assertive" tabindex="0" style="display:none;">
+        <p class="review-text">"Comfortable rooms and perfect location close to many attractions. Can't wait to visit again!"</p>
+        <p class="review-author">- Lakshan, Sri Lanka</p>
+      </div>
+      <div class="review-card" aria-atomic="true" aria-live="assertive" tabindex="0" style="display:none;">
+        <p class="review-text">"Excellent facilities and friendly staff. The breakfast options were delicious and diverse."</p>
+        <p class="review-author">- Emily, Australia</p>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" aria-label="Previous review" id="prevReview">&#10094;</button>
+        <button class="carousel-btn" aria-label="Next review" id="nextReview">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" aria-label="Contact Information and Form">
+    <h2>Contact Us</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15814.271174359955!2d79.85414512302736!3d6.9270783823714195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259f390be835d%3A0xc53d610a11b38d0b!2sOpulence%20Colombo!5e0!3m2!1sen!2slk!4v1692494731236!5m2!1sen!2slk" aria-label="Google Map to Opulence Colombo" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="info">
+      <div><strong>Phone:</strong> <a href="tel:+94117960006" aria-label="Call Opulence Colombo">+94 11 7960006</a></div>
+      <div><strong>Email:</strong> <a href="mailto:info@opulencecolombo.com" aria-label="Email Opulence Colombo">info@opulencecolombo.com</a></div>
+      <div><strong>WhatsApp:</strong> <a href="https://wa.me/94117960006" target="_blank" rel="noopener" aria-label="WhatsApp message Opulence Colombo">+94 11 7960006</a></div>
+      <div><strong>Location:</strong> Peer Saibo Street 78, Colombo, Sri Lanka</div>
+    </div>
+    <form id="contact-form" aria-label="Contact form for Opulence Colombo" novalidate>
+      <label for="contact-name">Name:</label>
+      <input type="text" id="contact-name" name="contact-name" required aria-required="true" />
+      <label for="contact-email">Email:</label>
+      <input type="email" id="contact-email" name="contact-email" required aria-required="true" />
+      <label for="contact-message">Message:</label>
+      <textarea id="contact-message" name="contact-message" required aria-required="true"></textarea>
+      <button type="submit">Send Message</button>
+      <div class="form-feedback" aria-live="polite"></div>
+    </form>
+    <div id="live-chat-placeholder" aria-live="polite" aria-atomic="true">
+      Live chat coming soon...
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-desc" aria-label="Short description about Opulence Colombo">
+      Opulence Colombo - Your ultimate luxury retreat blending tropical peace and urban charm in the heart of Sri Lanka's capital.
+    </div>
+    <nav class="quick-links" aria-label="Footer quick links">
+      <a href="#rooms">Rooms</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#welcome">About</a>
+      <a href="#" tabindex="-1" aria-disabled="true">Terms & Conditions</a>
+    </nav>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" tabindex="0" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22,12a10,10,0,1,0-11.5,9.8v-7h-3v-3h3v-2.3a3,3,0,0,1,3-3h3v3h-3a1,1,0,0,0-1,1v1h4Z"/></svg></a>
+      <a href="#" aria-label="Instagram" tabindex="0" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12,5.5A6.5,6.5,0,1,0,18.5,12,6.5,6.5,0,0,0,12,5.5Zm0,10.7A4.2,4.2,0,1,1,16.2,12,4.2,4.2,0,0,1,12,16.2ZM17.8,7A1.2,1.2,0,1,1,16.6,5.8,1.2,1.2,0,0,1,17.8,7Z"/></svg></a>
+      <a href="#" aria-label="TripAdvisor" tabindex="0" target="_blank" rel="noopener"><svg aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.66 9.89a1.98 1.98 0 1 1-3.96 0 1.98 1.98 0 0 1 3.96 0zM12 17a4.5 4.5 0 0 1-4.5-4.5c0-.4.07-.78.18-1.15A3.74 3.74 0 1 0 17.82 12c0 2.03-1.65 3.68-3.82 3.68z"/></svg></a>
+    </div>
+    <div class="newsletter" role="form" aria-label="Newsletter signup form">
+      <input type="email" id="newsletter-email" aria-label="Email address for newsletter signup" placeholder="Your email address" />
+      <button type="button" id="newsletter-btn">Subscribe</button>
+    </div>
+    <p style="margin-top:1rem; font-size:0.85rem; color:#888;">&copy; 2024 Opulence Colombo. All rights reserved.</p>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" aria-label="Toggle dark and light mode" title="Toggle Dark Mode">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
+
+  <script>
+    // Floating navbar visibility on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > window.innerHeight * 0.2) {
+        navbar.classList.add('visible');
+      } else {
+        navbar.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Room data
+    const roomsData = [
+      {
+        id: 'r1',
+        type: 'Deluxe Double Room',
+        category: ['deluxe'],
+        balcony: false,
+        twinBeds: false,
+        amenities: ['Air Conditioning', 'Private Bathroom', 'Work Desk', 'TV', 'Soundproofing', 'Tea/Coffee Maker'],
+        maxGuests: 2,
+        photos: [
+          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1494522203554-7a70cd62b7e7?auto=format&fit=crop&w=800&q=80'
+        ],
+        desc: 'The Deluxe Double Room offers a spacious setting with modern amenities, perfect for a comfortable stay with a cozy bed and elegant decor.'
+      },
+      {
+        id: 'r2',
+        type: 'Deluxe Double Room with Balcony',
+        category: ['deluxe', 'balcony'],
+        balcony: true,
+        twinBeds: false,
+        amenities: ['Air Conditioning', 'Private Bathroom', 'Balcony', 'Work Desk', 'TV', 'Soundproofing', 'Tea/Coffee Maker'],
+        maxGuests: 2,
+        photos: [
+          'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1465414829459-d228b58caf6e?auto=format&fit=crop&w=800&q=80'
+        ],
+        desc: 'Enjoy fresh air from your private balcony in this Deluxe Double Room, perfectly blending comfort with scenic views.'
+      },
+      {
+        id: 'r3',
+        type: 'Superior Double or Twin Room',
+        category: ['superior', 'balcony', 'twin'],
+        balcony: true,
+        twinBeds: true,
+        amenities: ['Air Conditioning', 'Private Bathroom', 'Balcony', 'Work Desk', 'TV', 'Soundproofing', 'Tea/Coffee Maker'],
+        maxGuests: 2,
+        photos: [
+          'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80'
+        ],
+        desc: 'Flexible room setup offering twin or double beds and a balcony for guests wanting both luxury and versatility.'
+      }
+    ];
+
+    // Render rooms
+    const roomList = document.getElementById('room-list');
+    const filters = document.querySelectorAll('#room-filters button');
+
+    function renderRooms(filter = 'all') {
+      roomList.innerHTML = '';
+      let filteredRooms = roomsData;
+      if(filter === 'deluxe') {
+        filteredRooms = roomsData.filter(r => r.category.includes('deluxe'));
+      } else if(filter === 'balcony') {
+        filteredRooms = roomsData.filter(r => r.balcony);
+      } else if(filter === 'twin') {
+        filteredRooms = roomsData.filter(r => r.twinBeds);
+      } else if(filter === 'amenities') {
+        filteredRooms = roomsData; // For demo, show all amenities; real filter can be more specific
+      }
+      filteredRooms.forEach(room => {
+        const card = document.createElement('article');
+        card.className = 'room-card';
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `View details for ${room.type}`);
+        card.innerHTML = `
+          <img src="${room.photos[0]}" alt="${room.type} image" />
+          <div class="room-info">
+            <h3>${room.type}</h3>
+            <p>${room.desc.substring(0, 100)}...</p>
+            <div class="features">Max Guests: ${room.maxGuests}</div>
+            <button type="button" aria-haspopup="dialog">View Details</button>
+          </div>`;
+        roomList.appendChild(card);
+
+        card.querySelector('button').addEventListener('click', () => openRoomModal(room.id));
+        card.addEventListener('keypress', e => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            openRoomModal(room.id);
+            e.preventDefault();
+          }
+        });
+      });
+    }
+    renderRooms();
+
+    // Filter buttons interaction
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+          b.tabIndex = -1;
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        btn.tabIndex = 0;
+        renderRooms(btn.dataset.filter);
+      });
+    });
+
+    // Room Modal
+    const roomModal = document.getElementById('room-modal');
+    const modalTitle = roomModal.querySelector('#room-modal-title');
+    const modalGallery = roomModal.querySelector('.modal-gallery');
+    const modalDesc = roomModal.querySelector('.modal-desc');
+    const modalAmenities = roomModal.querySelector('.modal-amenities');
+    const modalCloseBtn = roomModal.querySelector('.close-btn');
+
+    function openRoomModal(id) {
+      const room = roomsData.find(r => r.id === id);
+      if(!room) return;
+      modalTitle.textContent = room.type;
+      modalGallery.innerHTML = '';
+      room.photos.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = room.type + ' photo ' + (i + 1);
+        img.tabIndex = 0;
+        img.addEventListener('click', () => openLightbox(src, img.alt));
+        img.addEventListener('keypress', e => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            openLightbox(src, img.alt);
+            e.preventDefault();
+          }
+        });
+        modalGallery.appendChild(img);
+      });
+      modalDesc.textContent = room.desc;
+      modalAmenities.innerHTML = '';
+      room.amenities.forEach(a => {
+        const span = document.createElement('span');
+        span.textContent = a;
+        modalAmenities.appendChild(span);
+      });
+      roomModal.classList.add('active');
+      roomModal.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    modalCloseBtn.addEventListener('click', closeRoomModal);
+    roomModal.addEventListener('click', e => {
+      if(e.target === roomModal) closeRoomModal();
+    });
+    window.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && roomModal.classList.contains('active')) {
+        closeRoomModal();
+      }
+    });
+    function closeRoomModal() {
+      roomModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Gallery Lightbox
+    const lightbox = document.getElementById('lightbox-overlay');
+    const lightboxImg = lightbox.querySelector('img');
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+      lightbox.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    lightbox.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('keydown', e => {
+      if(e.key === 'Escape') closeLightbox();
+    });
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Things to do tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+          b.tabIndex = -1;
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+        button.tabIndex = 0;
+
+        const target = button.dataset.tab;
+        tabContents.forEach(content => {
+          if(content.dataset.content === target) {
+            content.classList.add('active');
+          } else {
+            content.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Guest Reviews Carousel
+    const reviews = document.querySelectorAll('.review-card');
+    const prevReviewBtn = document.getElementById('prevReview');
+    const nextReviewBtn = document.getElementById('nextReview');
+    let currentReview = 0;
+    function showReview(index) {
+      reviews.forEach((r,i) => {
+        r.style.display = i === index ? 'block' : 'none';
+      });
+      reviews[index].focus();
+    }
+    prevReviewBtn.addEventListener('click', () => {
+      currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+      showReview(currentReview);
+    });
+    nextReviewBtn.addEventListener('click', () => {
+      currentReview = (currentReview + 1) % reviews.length;
+      showReview(currentReview);
+    });
+    showReview(currentReview);
+
+    // Booking form validation and feedback
+    const bookingForm = document.getElementById('booking-form');
+    const feedbackEl = bookingForm.querySelector('.feedback');
+    // Set min dates for check-in and check-out inputs (today and tomorrow)
+    const today = new Date().toISOString().split('T')[0];
+    const tomorrowDate = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+    document.getElementById('checkin').setAttribute('min', today);
+    document.getElementById('checkout').setAttribute('min', tomorrowDate);
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      feedbackEl.textContent = '';
+      const roomType = bookingForm.roomType.value;
+      const guests = bookingForm.guests.value;
+      const checkin = bookingForm.checkin.value;
+      const checkout = bookingForm.checkout.value;
+      if(!roomType || !guests || !checkin || !checkout) {
+        feedbackEl.style.color = 'red';
+        feedbackEl.textContent = 'Please fill in all required fields.';
+        return;
+      }
+      if(checkin >= checkout) {
+        feedbackEl.style.color = 'red';
+        feedbackEl.textContent = 'Check-out date must be after check-in date.';
+        return;
+      }
+      feedbackEl.style.color = '#4a7a00';
+      feedbackEl.textContent = 'Thank you for booking! A confirmation email will be sent shortly.';
+      bookingForm.reset();
+    });
+
+    // Contact form validation and feedback
+    const contactForm = document.getElementById('contact-form');
+    const contactFeedback = contactForm.querySelector('.form-feedback');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactFeedback.textContent = '';
+      const name = contactForm['contact-name'].value.trim();
+      const email = contactForm['contact-email'].value.trim();
+      const message = contactForm['contact-message'].value.trim();
+      if(!name || !email || !message) {
+        contactFeedback.style.color = 'red';
+        contactFeedback.textContent = 'Please fill in all required fields.';
+        return;
+      }
+      // Basic email validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,6}$/i;
+      if(!emailPattern.test(email)) {
+        contactFeedback.style.color = 'red';
+        contactFeedback.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      contactFeedback.style.color = '#4a7a00';
+      contactFeedback.textContent = 'Thank you for contacting us! We will respond briefly.';
+      contactForm.reset();
+    });
+
+    // Newsletter signup simulation
+    const newsletterBtn = document.getElementById('newsletter-btn');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    newsletterBtn.addEventListener('click', () => {
+      const val = newsletterEmail.value.trim();
+      if(!val) {
+        alert('Please enter your email to subscribe.');
+        newsletterEmail.focus();
+        return;
+      }
+      alert('Thank you for subscribing to our newsletter!');
+      newsletterEmail.value = '';
+    });
+
+    // Dark and Light Mode Toggle
+    const darkToggle = document.getElementById('darkModeToggle');
+    function setDarkMode(isDark) {
+      if(isDark) {
+        document.body.classList.add('dark');
+        document.getElementById('loading-spinner').classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+        document.getElementById('loading-spinner').classList.remove('dark');
+      }
+      localStorage.setItem('darkMode', isDark);
+    }
+    darkToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.contains('dark');
+      setDarkMode(!isDark);
+    });
+    // Initialize from localStorage or prefers-color-scheme
+    const storedDark = localStorage.getItem('darkMode');
+    if(storedDark === 'true') {
+      setDarkMode(true);
+    } else if(storedDark === 'false') {
+      setDarkMode(false);
+    } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDarkMode(true);
+    }
+
+    // Loading spinner hide after page load
+    window.addEventListener('load', () => {
+  const spinner = document.getElementById('loading-spinner');
+  spinner.style.opacity = '0';
+  setTimeout(() => spinner.style.display = 'none', 500);
+  // Scroll to top after page load to prevent unwanted auto scroll
+  window.scrollTo(0, 0);
+});
+  </script>
+
+  <style>
+    /* Screen reader only class */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      border: 0 !important;
+    }
+  </style>
+</body>
+</html>
+
