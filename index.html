@@ -1818,13 +1818,12 @@
     });
     // Initialize from localStorage or prefers-color-scheme
     const storedDark = localStorage.getItem('darkMode');
-    if(storedDark === 'true') {
-      setDarkMode(true);
-    } else if(storedDark === 'false') {
-      setDarkMode(false);
-    } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setDarkMode(true);
-    }
+if(storedDark === 'true') {
+  setDarkMode(true);
+} else {
+  // Default to light mode if not set (ignore prefers-color-scheme)
+  setDarkMode(false);
+}
 
     // Loading spinner hide after page load
     window.addEventListener('load', () => {
